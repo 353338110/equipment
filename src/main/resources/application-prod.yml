@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/equipment?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    username: root
+    password:
+  mvc:
+    view:
+      prefix: classpath:/templates/
+      suffix: .html
+    static-path-pattern: /image/**
+  resources:
+    static-locations: file:/usr/local/equipment/pic/
+mybatis:
+  mapper-locations: classpath:/mapper/**.xml
+path:
+  log: /usr/local/equipment/logs/
+pic:
+  path: /usr/local/equipment/pic/
+
+alipay:
+  appID: 2016092200572517
+  merchantPrivateKey: MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC5m3XjqmN5gZVRPyhI/D8x2Q099Zxjd2D7Xueu8XCf6pIRXKDBG3B23WwtKZkG2Z1Mza+Bf7eMiGqnTHFCwAe/oEOhovXkQlF7jG2/U21oKAyLwrc9J1Yvo3cZ6mkYVkRaq1LMAUjwF1FbvQcFAJSxg8WxpXAssY9Vlg2BIoymhNCCKiK3NgT/tTrKfsTLwHJOys/9KDyMP7pCMugIbUyVLaLbKEtEUTZr7k5HwOy4nFq/enTFny7oJ8lHI1UOe45fw1RoqcpFBNKf48qkB4KlIutfLcBj3wTkbo34dcYoN8JRE1B6TkEUQMr/vxQde4pDUqcbgI1t19OX8/NZ5N7vAgMBAAECggEAQAZ3eSxamhxwNJGTxPF2nyxfXAMwikMw6iVHyFoy3ocdEe4g6dwcRHSHD2EtD2bb0xWUuBglac3Y9JLy8vKo+ZpAGi7LoYya7QJ5DSmrMOW3xjJJ4UeDfHVn7UGmNSX0+E3nBsZesatpfjrLhBc6M63f8TK/ajtp1T0otWYEnJ/XS7TqmCwoL86JGMJGOs4l9YepvKyd36JAec5CVV5FZuNOpb8E5xijagUjGowIyAIq6gVGeCXwDIaZpMp8Bu59yrjWXm3KrBwL+sirpVtkmHuNORMzVnsyn1iH4yxV6A3n+D9OZYbu45xQ4gXzzpatFqBa9Lno/dv1OwWJfccJwQKBgQDpcZY2cOqP8UKuAbkMRQCab6nhVz5F5hjLUx/dlZ9rr0gDPtwKD2YyZE7nMruOJnk4uk5WpVIRX+Rw35qyUBAWKpqi3m9/v54eBUurIJagldp5o/EJnGy+wMNPlf5pRYeIIJcwP6vEso3IlPmoWY0mcSf+taWpnJOgZAtzRvcGzwKBgQDLipogAznYL74x4j86BqBPDFlvgrQuEMPzHJxjG5G0rSIntlLzfUKuB0bWOuL5lWYr4ZclWJZ9/tzOJWxW24Q0Qv1bFw/B3XWPvC9ZaZC5+XLjwZiupvDObY5JKDO/LDpj564i6inEoin+5DjezIsSSQdjdPZxuF2cIWhUjXKt4QKBgDSM5lSxDIyEsg77wk1Zxy38zxA0FIelqZUzzCuUgAO8vIhGgUAegVH8tKplCEWSsZ0si3AD3TqeDI3AOFHFpilnQ9JAInduikiVxpfqSR4zPbA+UIdqWCyEtjLXQCMwjLb/JymsW5122GX760uThSvPM0KqX3WUEsN7Yfx8UCWPAoGALj3R4B37gULvedPFu4AP4YWTuALAvopuigfg+58iziJbVRxV4h1+DZ13mWoNcNhhOuzocsKahgtlzKux3lXGxjzF5HDr0oZmk/4T38Nc7vNeB6JO9rbUlIFNRw+MGg2JQnM7G5GJZbPVyKO+y9c6bTAMLqs+5f0Vv0fTtQnhmOECgYA9+RnNnsOHTdlcW2EkKVWF5PzTo8sLWxjNQfjsC1BddyU2C7jhc/mIe1EkfTyDLpDdXaifRNKkmucEHRVXv5rxfusaDwMyvRuOp690dV5VDSSMi9fD0Ely4565gf+7lT10ppny243ZNW73AVaqoS9r/NvsjphmpjLCkwpuZjUl2A==
+  alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7dN5l/8HpykfywOkdKpPE6+fEF0jboLa7chYncsjy5s6AchWnu6DwLz3XoTTzdgDIC355DYFJUVcgqzfF4FFcDV63yVUEjHCtIca0KPn47EOIF1PLLIF/sm+tN3DKOO5TrrUguY4+Q3VH5bpZZ2RMLHJ22+Y2W9yniuuA/qP3YHnZezLE/F0lThbZSpaL3fjSxpVxbJZ3CJBkOE8EBzOakvB1R3FqmFOkwnzAj4cq6EyNOonz1r0czj8OCFDuoZozl7ONUXDwCp68WF8PqVs+LHyVPp5lDgaFehdfcE48MsD0qmFTlf+4cSwYtdMSjUoQMj/xgAwSnVeC9W1xR90MQIDAQAB
+  gatewayUrl: https://openapi.alipaydev.com/gateway.do
+  sysServiceProviderId: 2088102176811043
+  notifyUrl: http://cshweixin.free.idcfengye.com/alipay/result
