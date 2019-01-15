@@ -9,7 +9,7 @@ public interface IAlipayRecord {
 
     Result<AlipayRecord> createRecord(String userId, String username,String merchantInfoId, int amount) ;
 
-    Result changeStatus(String id,int status);
+    Result changeStatus(String id,int status,String buyer_logon_id,String seller_email);
 
     Result<AlipayRecord> selectRecord(String id);
     List<AlipayRecord> queryAll();

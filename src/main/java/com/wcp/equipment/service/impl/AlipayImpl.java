@@ -79,7 +79,7 @@ public class AlipayImpl implements IAlipay {
                     if (tradeStatus.equals("TRADE_FINISHED") || tradeStatus.equals("TRADE_SUCCESS")) {
                         //要写的逻辑。自己按自己的要求写
                         iMerchantInfo.addSuccessAmount(merchantResult.getData().getId(),total_amount);
-                        iAlipayRecord.changeStatus(recordResult.getData().getId(),1);
+                        iAlipayRecord.changeStatus(recordResult.getData().getId(),1,request.getParameter("buyer_logon_id"),request.getParameter("seller_email"));
                         //todo 支付成功，可以通知别的服务器了
                         log.info("支付成功，可以通知别的服务器了");
 

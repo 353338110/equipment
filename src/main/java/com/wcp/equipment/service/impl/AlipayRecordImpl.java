@@ -40,11 +40,17 @@ public class AlipayRecordImpl implements IAlipayRecord {
     }
 
     @Override
-    public Result changeStatus(String id, int status) {
+    public Result changeStatus(String id, int status,String buyer_logon_id,String seller_email) {
         Result<AlipayRecord> recordResult = selectRecord(id);
         if (recordResult.getStatus()==200){
             AlipayRecord record = recordResult.getData();
             record.setStatus(status);
+            if (null!=buyer_logon_id && !"".equals(buyer_logon_id)){
+                record.setBuyerLogonId(buyer_logon_id);
+            }
+            if (null!=seller_email && !"".equals(seller_email)){
+                record.setSellerEmail(seller_email);
+            }
             int i = alipayRecordMapper.updateByPrimaryKeySelective(record);
             if (i>0){
                 return new Result();
