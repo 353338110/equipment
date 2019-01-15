@@ -21,14 +21,14 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `equipment`;
 CREATE TABLE `equipment` (
   `id` varchar(16) NOT NULL,
-  `equipmentName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '装备名称',
+  `equipmentName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '装备名称',
   `equipmentDesc` varchar(255) DEFAULT '' COMMENT '装备描述',
   `pic` varchar(255) DEFAULT NULL,
   `count` int(11) NOT NULL COMMENT '装备金额',
   `createTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of equipment
@@ -50,8 +50,8 @@ CREATE TABLE `merchant` (
   `notify_url` varchar(255) NOT NULL COMMENT '支付宝服务器主动通知商户服务器里指定的页面http/https路径',
   `app_auth_token` varchar(40) NOT NULL,
   `store_id` varchar(16) DEFAULT '123456' COMMENT '商户编号',
-  `merchantPrivateKey` varchar(5000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '应用私钥',
-  `alipayPublicKey` varchar(5000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '支付宝公钥',
+  `merchantPrivateKey` varchar(5000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '应用私钥',
+  `alipayPublicKey` varchar(5000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '支付宝公钥',
   `equimentId` varchar(255) NOT NULL,
   `mostTimes` int(4) DEFAULT '0' COMMENT '最大成交次数',
   `successTimes` int(4) DEFAULT '0' COMMENT '已经成交的次数，最大次数不能超过mostTimes',
@@ -60,7 +60,7 @@ CREATE TABLE `merchant` (
   PRIMARY KEY (`id`),
   KEY `merchantEquipmentId` (`equimentId`),
   CONSTRAINT `merchantEquipmentId` FOREIGN KEY (`equimentId`) REFERENCES `equipment` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of merchant
@@ -81,17 +81,14 @@ CREATE TABLE `merchantinfo` (
   `store_id` varchar(16) DEFAULT '123456' COMMENT '商户编号',
   `merchantPrivateKey` varchar(5000) NOT NULL COMMENT '应用私钥',
   `alipayPublicKey` varchar(5000) NOT NULL COMMENT '支付宝公钥',
-  `
-
-
-productName` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '卖点',
-  `subProductName` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '子卖点，子描述',
+  `productName` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '卖点',
+  `subProductName` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '子卖点，子描述',
   `maxAmount` int(16) NOT NULL COMMENT '每日交易最大金额',
   `successAmount` int(16) DEFAULT '0' COMMENT '已经成交金额数',
   `createTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of merchantinfo
@@ -102,7 +99,7 @@ productName` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT N
 -- ----------------------------
 DROP TABLE IF EXISTS `record`;
 CREATE TABLE `record` (
-  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '商户订单号 ',
+  `id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商户订单号 ',
   `trade_no` varchar(64) DEFAULT NULL COMMENT '支付宝交易号 ',
   `euipmentId` varchar(255) NOT NULL,
   `userId` varchar(255) NOT NULL,
@@ -114,7 +111,7 @@ CREATE TABLE `record` (
   KEY `equipmentId` (`euipmentId`),
   CONSTRAINT `equipmentId` FOREIGN KEY (`euipmentId`) REFERENCES `equipment` (`id`),
   CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of record
@@ -138,7 +135,7 @@ CREATE TABLE `user` (
   `createTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of user
