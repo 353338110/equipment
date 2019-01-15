@@ -13,6 +13,14 @@ spring:
     static-locations: file:E://ftpImg/
 mybatis:
   mapper-locations: classpath:/mapper/**.xml
+  #pagehelper分页插件配置
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethods: true
+  Arguments: true
+  params=count: countSql
+
 path:
   log: D:/equipment/log
 pic:

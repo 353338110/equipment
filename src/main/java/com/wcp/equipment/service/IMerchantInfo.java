@@ -7,7 +7,9 @@ import java.util.List;
 
 public interface IMerchantInfo {
     Result<MerchantInfo> query(String id);
+    Result<MerchantInfo> queryByAll(String id);
     Result<List<MerchantInfo>> queryAll();
+    Result<List<MerchantInfo>> queryAllByAll();
     Result<MerchantInfo> createMerchant(MerchantInfo merchantInfo);
 
 

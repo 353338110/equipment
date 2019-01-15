@@ -34,5 +34,6 @@
         <table tableName="record" domainObjectName="Record" ></table>
         <table tableName="merchant" domainObjectName="Merchant" ></table>
         <table tableName="merchantInfo" domainObjectName="MerchantInfo" ></table>
+        <table tableName="alipayRecord" domainObjectName="AlipayRecord" ></table>
     </context>
 </generatorConfiguration>

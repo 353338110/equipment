@@ -21,6 +21,25 @@ public class MerchantInfoImpl implements IMerchantInfo {
     public Result<MerchantInfo> query(String id) {
         MerchantInfo merchantInfo = merchantInfoMapper.selectByPrimaryKey(id);
         if (null!=merchantInfo && null!=merchantInfo.getId()){
+            merchantInfo.setAlipaypublickey("");
+            merchantInfo.setSign("");
+            merchantInfo.setAppId("");
+            merchantInfo.setAppAuthToken("");
+            merchantInfo.setNotifyUrl("");
+            merchantInfo.setMerchantprivatekey("");
+            merchantInfo.setStoreId("");
+            merchantInfo.setSuccessamount(0);
+            merchantInfo.setMaxamount(0);
+            return new Result<>(merchantInfo);
+        }else {
+            return new Result<>(0,"查询不到merchantInfo记录");
+        }
+    }
+
+    @Override
+    public Result<MerchantInfo> queryByAll(String id) {
+        MerchantInfo merchantInfo = merchantInfoMapper.selectByPrimaryKey(id);
+        if (null!=merchantInfo && null!=merchantInfo.getId()){
             return new Result<>(merchantInfo);
         }else {
             return new Result<>(0,"查询不到merchantInfo记录");
@@ -52,6 +71,19 @@ public class MerchantInfoImpl implements IMerchantInfo {
     }
 
     @Override
+    public Result<List<MerchantInfo>> queryAllByAll() {
+        MerchantInfoExample merchantExample = new MerchantInfoExample();
+        MerchantInfoExample.Criteria criteria = merchantExample.createCriteria();;
+        criteria.andIdIsNotNull();
+        List<MerchantInfo> merchantInfos = merchantInfoMapper.selectByExample(merchantExample);
+        if (null!=merchantInfos && merchantInfos.size()>0){
+            return new Result<>(merchantInfos);
+        }else {
+            return new Result<>(0,"查询不到商户");
+        }
+    }
+
+    @Override
     public Result<MerchantInfo> createMerchant(MerchantInfo merchantInfo) {
         merchantInfo.setId(UUID.getAccountIdByUUId());
         int i = merchantInfoMapper.insertSelective(merchantInfo);
@@ -64,7 +96,7 @@ public class MerchantInfoImpl implements IMerchantInfo {
 
     @Override
     public Result<MerchantInfo> changeMerchant(MerchantInfo merchantInfo) {
-        int i = merchantInfoMapper.updateByPrimaryKey(merchantInfo);
+        int i = merchantInfoMapper.updateByPrimaryKeySelective(merchantInfo);
         if (i>0){
             return new Result();
         }else {
