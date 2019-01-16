@@ -168,10 +168,25 @@ public class AlipayImpl implements IAlipay {
     @Override
     public Result query(String outTradeNo) throws Exception{
         Result<AlipayRecord> recordResult = iAlipayRecord.selectRecord(outTradeNo);
-        MerchantInfo merchantInfo = null;
+        if (recordResult.getStatus()==200){
+            /*String msg = "";
+            switch (recordResult.getData().getStatus()){
+                case 0: msg = "该订单正在";
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+            }*/
+            return new Result(200,recordResult.getData().getStatus()+"");
+        }else {
+            return new Result(recordResult.getStatus(),recordResult.getMessage());
+        }
+
+       /* MerchantInfo merchantInfo = null;
         if (recordResult.getStatus()==200 && null!=recordResult.getData()
                 && null!=recordResult.getData().getId()){
-            Result<MerchantInfo> merchantResult = iMerchantInfo.queryByAll(recordResult.getData().getId());
+            Result<MerchantInfo> merchantResult = iMerchantInfo.queryByAll(recordResult.getData().getMerchantinfoid());
             if (merchantResult.getStatus()==200){
                 merchantInfo = merchantResult.getData();
             }else {
@@ -190,18 +205,18 @@ public class AlipayImpl implements IAlipay {
         AlipayTradeQueryRequest request = new AlipayTradeQueryRequest();
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("out_trade_no", outTradeNo);
-        /*request.setBizContent("{" +
+        *//*request.setBizContent("{" +
                 "\"order_no\":\"20170427000000001000000001\"" +
-                "  }");*/
+                "  }");*//*
         request.setBizContent(jsonObject.toString());
         AlipayTradeQueryResponse response = alipayClient.execute(request);
-        /**
+        *//**
          * trade_status
          * 	交易状态：WAIT_BUYER_PAY（交易创建，等待买家付款）、
          * 	TRADE_CLOSED（未付款交易超时关闭，或支付完成后全额退款）、
          * 	TRADE_SUCCESS（交易支付成功）、
          * 	TRADE_FINISHED（交易结束，不可退款）
-         */
+         *//*
         log.info(response.getMsg());
         log.info(response.getSubMsg());
         log.info(response.getTradeStatus());
@@ -234,6 +249,6 @@ public class AlipayImpl implements IAlipay {
         } else {
             log.info(response.getSubMsg());
             return new Result(0,response.getSubMsg());
-        }
+        }*/
     }
 }

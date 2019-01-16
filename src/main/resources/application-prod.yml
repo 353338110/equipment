@@ -30,4 +30,4 @@ alipay:
   alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7dN5l/8HpykfywOkdKpPE6+fEF0jboLa7chYncsjy5s6AchWnu6DwLz3XoTTzdgDIC355DYFJUVcgqzfF4FFcDV63yVUEjHCtIca0KPn47EOIF1PLLIF/sm+tN3DKOO5TrrUguY4+Q3VH5bpZZ2RMLHJ22+Y2W9yniuuA/qP3YHnZezLE/F0lThbZSpaL3fjSxpVxbJZ3CJBkOE8EBzOakvB1R3FqmFOkwnzAj4cq6EyNOonz1r0czj8OCFDuoZozl7ONUXDwCp68WF8PqVs+LHyVPp5lDgaFehdfcE48MsD0qmFTlf+4cSwYtdMSjUoQMj/xgAwSnVeC9W1xR90MQIDAQAB
   gatewayUrl: https://openapi.alipaydev.com/gateway.do
   sysServiceProviderId: 2088102176811043
-  notifyUrl: http://cshweixin.free.idcfengye.com/alipay/result
+  notifyUrl: http://39.108.55.67/alipay/result
