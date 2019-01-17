@@ -130,4 +130,23 @@ public class MerchantInfoImpl implements IMerchantInfo {
             return new Result<>(0,"查询不到MerchantInfo");
         }
     }
+
+    @Override
+    public Result amount2Zero() {
+
+        List<MerchantInfo> list = merchantInfoMapper.selectByExample(new MerchantInfoExample());
+        int success = 0;
+        for (MerchantInfo item:list) {
+            item.setSuccessamount(0);
+            int i = merchantInfoMapper.updateByPrimaryKeySelective(item);
+            if (i>0){
+                ++success;
+            }
+        }
+        if (success==list.size()){
+            return new Result(200,"更新当日交易额成功");
+        }else {
+            return new Result(0,"更新当日交易额总数"+list.size() +"成功数："+success);
+        }
+    }
 }

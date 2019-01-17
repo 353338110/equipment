@@ -30,10 +30,10 @@
         </javaClientGenerator>
         <!-- 指定我们要操作的表明和生成的javabean类名 -->
         <table tableName="user" domainObjectName="User" ></table>
-        <table tableName="equipment" domainObjectName="Equipment" ></table>
+       <!-- <table tableName="equipment" domainObjectName="Equipment" ></table>
         <table tableName="record" domainObjectName="Record" ></table>
         <table tableName="merchant" domainObjectName="Merchant" ></table>
         <table tableName="merchantInfo" domainObjectName="MerchantInfo" ></table>
-        <table tableName="alipayRecord" domainObjectName="AlipayRecord" ></table>
+        <table tableName="alipayRecord" domainObjectName="AlipayRecord" ></table>-->
     </context>
 </generatorConfiguration>

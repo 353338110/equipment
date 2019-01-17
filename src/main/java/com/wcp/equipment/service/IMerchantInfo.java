@@ -18,4 +18,6 @@ public interface IMerchantInfo {
     Result delete(String merchantInfoId);
 
     Result<MerchantInfo> addSuccessAmount(String id,int amount);
+
+    Result amount2Zero();
 }
