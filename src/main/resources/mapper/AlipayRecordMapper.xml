@@ -115,6 +115,11 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByJS" parameterType="com.wcp.equipment.pojo.AlipayRecordExample" resultMap="BaseResultMap">
+    select * from alipayrecord
+    limit #{start},#{length}
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     <!--
       WARNING - @mbggenerated

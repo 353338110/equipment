@@ -93,4 +93,6 @@ public interface AlipayRecordMapper {
      * @mbggenerated Wed Jan 16 23:56:19 CST 2019
      */
     int updateByPrimaryKey(AlipayRecord record);
+
+    List<AlipayRecord> selectByJS(@Param("start")int start,@Param("length")int length);
 }

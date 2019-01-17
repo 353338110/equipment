@@ -3,6 +3,7 @@ package com.wcp.equipment.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.wcp.equipment.pojo.AlipayRecord;
+import com.wcp.equipment.pojo.JSPageBean;
 import com.wcp.equipment.pojo.Result;
 import com.wcp.equipment.service.IAlipayRecord;
 import lombok.extern.slf4j.Slf4j;
@@ -44,6 +45,12 @@ public class AlipayRecordController {
         PageInfo<AlipayRecord> pageInfo = new PageInfo<AlipayRecord>(alipayRecords);
 
         return pageInfo;
+    }
+
+    @RequestMapping("/queryAllJS")
+    @ResponseBody
+    private JSPageBean<AlipayRecord> queryRecordAllByJS(int draw, int start, int length){
+        return iAlipayRecord.queryAllByJS(draw,start,length);
     }
 
 }

@@ -4,10 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.wcp.equipment.dao.AlipayRecordMapper;
-import com.wcp.equipment.pojo.AlipayRecord;
-import com.wcp.equipment.pojo.AlipayRecordExample;
-import com.wcp.equipment.pojo.Record;
-import com.wcp.equipment.pojo.Result;
+import com.wcp.equipment.pojo.*;
 import com.wcp.equipment.service.IAlipayRecord;
 import com.wcp.equipment.utils.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,5 +75,17 @@ public class AlipayRecordImpl implements IAlipayRecord {
         AlipayRecordExample.Criteria criteria =alipayRecordExample.createCriteria();
         criteria.andIdIsNotNull();
         return alipayRecordMapper.selectByExample(alipayRecordExample);
+    }
+
+    @Override
+    public JSPageBean<AlipayRecord> queryAllByJS(int draw, int start, int length) {
+        List<AlipayRecord> list = alipayRecordMapper.selectByJS(start, length);
+        int count = alipayRecordMapper.countByExample(new AlipayRecordExample());
+        JSPageBean<AlipayRecord> jsPageBean = new JSPageBean<>();
+        jsPageBean.setDraw(draw);
+        jsPageBean.setRecordsTotal(count);
+        jsPageBean.setData(list);
+        jsPageBean.setRecordsFiltered(count);
+        return jsPageBean;
     }
 }
