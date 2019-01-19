@@ -25,10 +25,11 @@ public class Schedule {
     IMerchantInfo iMerchantInfo;
 
     //@Scheduled(initialDelay=10000, fixedRate=10000)
-    @Scheduled(cron = "0 0 0 1-2 * ? ")
+    //@Scheduled(cron = "0 0 0 1-2 * ?")
+    @Scheduled(cron = "0 0 0 * * ?")
     public void logTime(){
-        Result result = iMerchantInfo.amount2Zero();
         log.info("定时任务，现在时间："+new Date());
+        Result result = iMerchantInfo.amount2Zero();
         log.info(result.getMessage());
 
 
